@@ -1,18 +1,22 @@
 version: '3.7'
 
 volumes:
-    logs:
-        driver: local
+  logs:
+    driver: local
+  rclone_config:
+    driver: local
 
 services:
-    slim:
-        image: php:8-alpine
-        working_dir: /var/www
-        command: php -S 0.0.0.0:8080 -t public
-        environment:
-            docker: "true"
-        ports:
-            - "8080:8080"
-        volumes:
-            - .:/var/www
-            - logs:/var/www/logs
+  frankenphp:
+    build: .
+    working_dir: /var/www
+    ports:
+      - "80:80"
+      - "443:443"
+      - "443:443/udp"
+    tty: true
+    volumes:
+      - .:/var/www
+      - logs:/var/www/logs
+      # Mount the Windows rclone.conf file into the container
+      - /c/Users/Guest.02/AppData/Roaming/rclone/rclone.conf:/root/.config/rclone/rclone.conf:ro  # Adjust Windows path for Docker
