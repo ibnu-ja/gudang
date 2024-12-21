@@ -1,0 +1,22 @@
+// https://aka.ms/devcontainer.json
+{
+	"name": "extonan",
+	"dockerComposeFile": [
+		"../docker-compose.yml"
+	],
+	"service": "app",
+	"workspaceFolder": "/app",
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				// "mikestead.dotenv",
+			],
+			"settings": {}
+		}
+	},
+	// "remoteUser": "root",
+	// "postCreateCommand": ""
+	// "forwardPorts": [],
+	// "runServices": [],
+	// "shutdownAction": "none",
+}
