@@ -7,6 +7,7 @@ namespace Tests\Application\Actions;
 use App\Application\Actions\Action;
 use App\Application\Actions\ActionPayload;
 use DateTimeImmutable;
+use DateTimeInterface;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Log\LoggerInterface;
 use Tests\TestCase;
@@ -32,7 +33,7 @@ class ActionTest extends TestCase
                     new ActionPayload(
                         202,
                         [
-                            'willBeDoneAt' => (new DateTimeImmutable())->format(DateTimeImmutable::ATOM)
+                            'willBeDoneAt' => new DateTimeImmutable()->format(DateTimeInterface::ATOM)
                         ]
                     )
                 );
@@ -63,7 +64,7 @@ class ActionTest extends TestCase
             {
                 return $this->respondWithData(
                     [
-                        'willBeDoneAt' => (new DateTimeImmutable())->format(DateTimeImmutable::ATOM)
+                        'willBeDoneAt' => new DateTimeImmutable()->format(DateTimeInterface::ATOM)
                     ],
                     202
                 );

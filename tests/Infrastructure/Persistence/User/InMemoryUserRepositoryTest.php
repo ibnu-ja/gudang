@@ -35,6 +35,9 @@ class InMemoryUserRepositoryTest extends TestCase
         $this->assertEquals(array_values($users), $userRepository->findAll());
     }
 
+    /**
+     * @throws UserNotFoundException
+     */
     public function testFindUserOfId()
     {
         $user = new User(1, 'bill.gates', 'Bill', 'Gates');
